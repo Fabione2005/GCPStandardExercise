@@ -5,9 +5,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.standard.gcp.model.entities.Student;
-
+@Repository
 public interface StudentRepository extends JpaRepository<Student, UUID> 
 {
 	Optional<List<Student>> findByName(String name);
