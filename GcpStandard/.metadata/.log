@@ -1,0 +1,65 @@
+!SESSION 2020-08-16 15:43:55.127 -----------------------------------------------
+eclipse.buildId=4.12.0.I20190605-1800
+java.version=1.8.0_181
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_CL
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.core 1 0 2020-08-16 15:44:45.108
+!MESSAGE Using Apache MINA sshd as ssh client.
+
+!ENTRY com.vaadin.designer2 2 0 2020-08-16 15:44:58.880
+!MESSAGE Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx(...) returned error code 5.
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:03.702
+!MESSAGE Schedule fetching all notifications
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:03.713
+!MESSAGE Schedule version update jobs
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:05.040
+!MESSAGE Fetching all notifications
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:05.074
+!MESSAGE Requesting user info (notification settings URL)
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:06.020
+!MESSAGE BrowserCore initialized.
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-08-16 15:45:06.088
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Fabio'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:06.362
+!MESSAGE HTTP Response code :200
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:06.463
+!MESSAGE HTTP Response code :200
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:06.543
+!MESSAGE Parse notifications
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:06.616
+!MESSAGE Save JSON notifications content to cache file D:\Proyectos Java\gcpstandar\.metadata\.plugins\com.vaadin.integration.eclipse\notifications-cache.json
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:07.698
+!MESSAGE Icon https://vaadin.com/documents/10187/10395/tori-icon-blue-bg-90px/4597dffb-3868-4711-b422-8fc3e71844e6?t=1394217295000 is downloaded
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:08.536
+!MESSAGE Image https://website.vaadin.com/hubfs/Migration%20Assessment.jpg is downloaded
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:08.910
+!MESSAGE Image https://website.vaadin.com/hubfs/MarCom/Kubernetes.png is downloaded
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:09.242
+!MESSAGE Image https://website.vaadin.com/hubfs/Data-binding-grid-efficient.png is downloaded
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:09.264
+!MESSAGE Schedule fetching new notifications
+
+!ENTRY com.vaadin.designer2 1 0 2020-08-16 15:45:33.740
+!MESSAGE All vaadin 7+ projects : []
