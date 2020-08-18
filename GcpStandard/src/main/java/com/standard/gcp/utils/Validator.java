@@ -19,9 +19,10 @@ public class Validator {
 	 * Validates the checker digit
 	 */
 	public static String getCheckerDigit( String rut ) {
-		Integer M=0,S=1,T=Integer.parseInt(rut);
-		for (;T!=0;T=(int) Math.floor(T/=10))
-			S=(S+T%10*(9-M++%6))%11;
-		return ( S > 0 ) ? String.valueOf(S-1) : "k";		
+		Integer M=0,S=1;
+		Long T = Long.valueOf(rut);
+		for (;T!=0;T = (long) Math.floor(T/=10))
+			S=(int) ((S+T%10*(9-M++%6))%11);
+		return ( S > 0 ) ? String.valueOf(S-1) : "k";	
 	}
 }
