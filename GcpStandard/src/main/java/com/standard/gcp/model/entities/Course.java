@@ -3,16 +3,14 @@ package com.standard.gcp.model.entities;
 import java.io.Serializable;
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -37,17 +35,28 @@ public class Course implements Serializable {
 	private String name;
 	
 	@NotNull(message = "Code most not be empty")
-	@Size(max = 4)
+	@Size(max = 4,message = "The max size of code is 4 digits")
+	@Column(unique = true)
 	private String code;
 	
-	@OneToOne(mappedBy = "course")
-    @JsonIgnore
-	private Student student;
 
 	public Course(String name, String code) {
 		super();
 		this.name = name;
 		this.code = code;
+	}
+	
+	public Course() 
+	{
+		
+	}
+	
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 	public String getName() {

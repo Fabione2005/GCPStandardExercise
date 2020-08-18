@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -36,6 +36,7 @@ public class Student implements Serializable {
 	private UUID id;
 
 	@NotNull(message = "Rut most not be empty")
+	@Column(unique = true)
 	private String rut;
 
 	@NotNull(message = "Name most not be empty")
@@ -45,11 +46,11 @@ public class Student implements Serializable {
 	private String lastName;
 
 	@NotNull(message = "Age most not be empty")
-	@Min(18)
+	@Min(value = 18, message = "Minimun age for registration is 18")
 	private int age;
 
-	@OneToOne(targetEntity=Course.class, fetch= FetchType.EAGER, cascade= CascadeType.ALL)
-    @JoinColumn(name = "student_id")
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "course_id")
 	private Course course;
 
 	public Student(String rut, String name, String lastName, int age, Course course) {
@@ -59,6 +60,11 @@ public class Student implements Serializable {
 		this.lastName = lastName;
 		this.age = age;
 		this.course = course;
+	}
+	
+	public Student() 
+	{
+		
 	}
 	
 	public UUID getId() {
