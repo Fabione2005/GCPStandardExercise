@@ -9,8 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.standard.gcp.dao.CourseRepository;
 import com.standard.gcp.dao.StudentRepository;
 import com.standard.gcp.exception.GenericException;
+import com.standard.gcp.exception.InvalidInfoException;
 import com.standard.gcp.exception.RegisterNotFoundException;
 import com.standard.gcp.model.entities.Course;
 import com.standard.gcp.model.entities.Student;
@@ -21,6 +23,9 @@ public class StudentServiceImpl implements StudentService {
 
 	@Autowired
 	StudentRepository dao;
+	
+	@Autowired
+	CourseRepository daoCourse;
 
 	@Override
 	public List<Student> retrieveAllStudent() {
@@ -89,6 +94,8 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public ResponseEntity<BaseResult> addStudent(Student student) {
+		
+		dao.findByRut(student.getRut()).ifPresent(a -> { throw new InvalidInfoException("The rut you provided already exists"); } );
 		
 		dao.save(student);
 

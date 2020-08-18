@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.standard.gcp.dao.CourseRepository;
+import com.standard.gcp.exception.InvalidInfoException;
 import com.standard.gcp.exception.RegisterNotFoundException;
 import com.standard.gcp.model.entities.Course;
 import com.standard.gcp.model.generic.BaseResult;
@@ -55,6 +56,8 @@ public class CourseServiceImpl implements CourseService{
 
 	@Override
 	public ResponseEntity<BaseResult> addCourse(Course course) {
+		
+		dao.findByCode(course.getCode()).ifPresent(a -> { throw new InvalidInfoException("The course code you provided already exists"); } );
 
 		dao.save(course);
 		

@@ -3,7 +3,6 @@ package com.standard.gcp.model.entities;
 import java.io.Serializable;
 import java.util.UUID;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +35,6 @@ public class Course implements Serializable {
 	
 	@NotNull(message = "Code most not be empty")
 	@Size(max = 4,message = "The max size of code is 4 digits")
-	@Column(unique = true)
 	private String code;
 	
 

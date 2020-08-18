@@ -1,5 +1,8 @@
 package com.standard.gcp.controller.exceptionHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpHeaders;
@@ -23,7 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(value = { GenericException.class, InvalidInfoException.class,RegisterNotFoundException.class,Exception.class })
+	@ExceptionHandler(value = { GenericException.class, InvalidInfoException.class,RegisterNotFoundException.class
+			,Exception.class })
 	protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
 		BaseResult resultMessage = new BaseResult();
 		HttpStatus httpStatus = null;
@@ -45,4 +49,22 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 		}
 		return handleExceptionInternal(ex, resultMessage, new HttpHeaders(), httpStatus, request);
 	}
+	
+	 @ExceptionHandler(TransactionSystemException.class)
+	  ResponseEntity<?> handleConstraintViolationException(TransactionSystemException e) {
+		  List<BaseResult> errorList = new ArrayList<>();
+		  
+		  if (e.getRootCause() instanceof ConstraintViolationException) {
+		        ConstraintViolationException constraintViolationException = (ConstraintViolationException) e.getRootCause();
+		        
+		        constraintViolationException.getConstraintViolations().stream()
+		        .forEach(item -> {
+		        	errorList.add(new BaseResult(item.getMessage()));
+		        });
+		        logger.error(e.getMessage());
+		        
+		  }
+		
+		 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorList);
+	  }
 }
