@@ -1,17 +1,17 @@
-package com.standard.gcp.service;
+package com.standard.gcp.service.student;
 
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 
 import com.standard.gcp.model.entities.Student;
 import com.standard.gcp.model.generic.BaseResult;
 
-@Repository
+
 public interface StudentService {
 	Student retrieveStudentById(UUID id);
+	List<Student> retrieveAllStudent();
 	List<Student> retrieveStudentByName(String name);
 	List<Student> retrieveStudentByLastName(String lastName);
 	List<Student> retrieveStudentByRut(String rut);
@@ -19,4 +19,5 @@ public interface StudentService {
 	ResponseEntity<BaseResult> updateStudent(Student student);
 	ResponseEntity<BaseResult> deleteStudent(UUID id);
 	ResponseEntity<BaseResult> addStudent(Student student);
+	ResponseEntity<BaseResult> addDefaultStudents();
 }
